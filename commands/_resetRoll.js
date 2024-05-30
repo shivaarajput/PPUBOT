@@ -4,7 +4,7 @@
   need_reply: true
   auto_retry_time: 
   folder: 
-  answer: *Please Enter Correct Roll Number after that you won't be able to change your Roll Number ⤵️*
+  answer: *Last chance to change roll ⤵️*
   keyboard: 
   aliases: /resetroll
   group: 
@@ -12,7 +12,9 @@ CMD*/
 
 var roll_value = User.getProperty("value")
 var current_roll = User.getProperty("roll")
-if (roll_value == 1) {
+let regex = /^2[1-4]/
+
+if (regex.test(message) && message.length == 13 && roll_value == 1) {
   Bot.sendMessage(`Your Roll ${message} is reset successfully.`)
   User.setProperty("roll", message, "string")
   User.setProperty("value", 2, "integer")
@@ -22,8 +24,6 @@ if (roll_value == 1) {
     `You have already reset your Roll and Your Current Roll is ${current_roll}.`
   )
 } else {
-  Bot.sendMessage(
-    `Please use /setRoll to set Your Roll. ${roll_value}, ${current_roll}`
-  )
+  Bot.sendMessage(`Invalid Roll !!`)
 }
 

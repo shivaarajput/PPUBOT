@@ -63,4 +63,3 @@ if (YEAR == 1) {
 } else {
   Bot.editInlineKeyboard(keyboard)
 }
-

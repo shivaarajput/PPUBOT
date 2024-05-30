@@ -3,17 +3,16 @@
   help: 
   need_reply: true
   auto_retry_time: 
-  folder: 
+  folder: 👥 Users
   answer: If you have any issue, suggestion or feedback please send ⤵️
   keyboard: 
   aliases: /admin, /feedback, /suggestion, @admin
   group: 
 CMD*/
 
-Bot.sendMessageToChatWithId(
-  "1991415479",
-  `User: [${user.first_name}](tg://user?id=${user.telegramid})
-Message: ${message}`
-)
+Api.forwardMessage({
+  from_chat_id: user.telegramid,
+  message_id: request.message_id,
+  chat_id: "1991415479"
+})
 Bot.sendMessage("✨ Message Successfully sent to Admin.")
-
