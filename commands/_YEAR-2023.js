@@ -22,6 +22,10 @@ var keyboard = [
 ]
 
 if (yr < 24) {
+  Api.sendChatAction({
+    chat_id: user.telegramid,
+    action: "upload_document"
+  })
   if (subj == 40) {
     User.setProperty("year", yr, "string")
     Bot.runCommand(`${YEAR}/Vocational`)

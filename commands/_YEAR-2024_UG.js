@@ -21,14 +21,12 @@ const subj = roll.slice(5, 7)
 var COURSE = message
 var keyboard = [
   [{ title: "SELECT YOUR STREAM", command: "!" }],
-  [
-    { title: "BA SEM-I", command: `${COURSE}/BA(SEM-I)` },
-    { title: "BSC SEM-I", command: `${COURSE}/BSC(SEM-I)` },
-    { title: "BCOM SEM-I", command: `${COURSE}/BCOM(SEM-I)` },
-    { title: "BA SEM-II", command: `${COURSE}/BA(SEM-II)` },
-    { title: "BSC SEM-II", command: `${COURSE}/BSC(SEM-II)` },
-    { title: "BCOM SEM-II", command: `${COURSE}/BCOM(SEM-II)` }
-  ]
+  [{ title: "BA SEM-I", command: `${COURSE}/BA(SEM-I)` }],
+  [{ title: "BSC SEM-I", command: `${COURSE}/BSC(SEM-I)` }],
+  [{ title: "BCOM SEM-I", command: `${COURSE}/BCOM(SEM-I)` }],
+  [{ title: "BA SEM-II", command: `${COURSE}/BA(SEM-II)` }],
+  [{ title: "BSC SEM-II", command: `${COURSE}/BSC(SEM-II)` }],
+  [{ title: "BCOM SEM-II", command: `${COURSE}/BCOM(SEM-II)` }]
 ]
 
 if (subj == 51) {

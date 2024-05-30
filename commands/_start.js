@@ -28,3 +28,11 @@ Feel free to explore and let me know if you need any help! 😊
     `
 )
 
+var old_user = User.getProperty("old_user", false)
+
+if (!old_user) {
+  User.setProperty("old_user", true)
+  var totalUsers = parseInt(Bot.getProperty("activeUsers")) + 1
+  Bot.setProperty("activeUsers", totalUsers, "string")
+}
+
