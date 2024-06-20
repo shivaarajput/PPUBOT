@@ -13,14 +13,13 @@ CMD*/
 let id = message.slice(0, 10)
 let msg = message.slice(10, -1)
 
-Bot.sendMessageToChatWithId(
-  id,
-  `User: [${user.first_name}](tg://user?id=${user.telegramid})
-Message: ${msg}`
-)
-Api.sendMessage({
-  text: `✨ Message Successfully sent to User: [${id}](tg://user?id=${id})
-${message}
-`
-})
-
+Bot.sendMessageToChatWithId(id, `Admin: ${msg}`)
+//Api.sendMessage({
+// text: `✨ Message Successfully sent to User: [${id}](tg://user?id=${id})
+//${message}
+//`
+//})
+// Bot.run({
+ // command: "/changeRequest"
+// })
+Bot.sendMessage("Success!")

@@ -11,28 +11,37 @@
 CMD*/
 
 var roll = User.getProperty("roll")
-const subj = roll.slice(6, 7)
+const subj = typeof roll !== "undefined" && roll.slice ? roll.slice(6, 7) : -1
 var YEAR = message
 const yr_click = message.slice(-2)
-var yr = parseInt(roll.slice(0, 2))
+var yr =
+  typeof roll !== "undefined" && roll.slice ? parseInt(roll.slice(0, 2)) : 20
 var keyboard = [
   [{ title: "SELECT COURSE", command: "!" }],
   [{ title: "UG", command: `${YEAR}/UG` }],
-  [{ title: "VOCATIONAL", command: `${YEAR}/Vocational` }]
+  [{ title: "VOCATIONAL", command: `${YEAR}/Vocational` }],
+  [{ title: "REGULAR", command: `${YEAR}/Regular` }]
 ]
 
-if (yr == 24) {
+if (yr >= 22 && yr <= 24) {
+  Api.sendChatAction({
+    chat_id: user.telegramid,
+    action: "upload_document"
+  })
   if (subj == 0) {
     User.setProperty("year", yr_click, "string")
     Bot.runCommand(`${YEAR}/Vocational`)
-  } else if (subj == 1) {
+  } else if (subj == 1 && yr == 24) {
     User.setProperty("year", yr_click, "string")
     Bot.runCommand(`${YEAR}/UG`)
+  } else if (subj == 1 && yr < 24) {
+    User.setProperty("year", yr_click, "string")
+    Bot.runCommand(`${YEAR}/Regular`)
   } else {
     User.setProperty("year", yr_click, "string")
     Bot.editInlineKeyboard(keyboard)
   }
 } else {
-  Bot.sendMessage("Your 2024 is currently not available!")
+  Bot.runCommand("/setRoll")
 }
 

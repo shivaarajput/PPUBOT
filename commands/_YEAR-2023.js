@@ -11,8 +11,8 @@
 CMD*/
 
 var roll = User.getProperty("roll")
-const subj = roll.slice(5, 7)
-const ryr = roll.slice(2)
+const subj = typeof roll !== "undefined" && roll.slice ? roll.slice(5, 7) : -1
+// const ryr = roll.slice(2)
 var YEAR = message
 const yr = message.slice(-2)
 var keyboard = [
@@ -32,6 +32,8 @@ if (yr < 24) {
   } else if (subj == 21 || subj == 11 || subj == 31) {
     User.setProperty("year", yr, "string")
     Bot.runCommand(`${YEAR}/Regular`)
+  } else if (subj == -1) {
+    Bot.runCommand(`/setRoll`)
   } else {
     User.setProperty("year", yr, "string")
     Bot.editInlineKeyboard(keyboard)

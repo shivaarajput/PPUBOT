@@ -13,7 +13,8 @@ CMD*/
 function isNumeric(value) {
   return !isNaN(value)
 }
-var msg = message.slice(0, 1)
+var new_msg = message || "abcd"
+var msg = new_msg.slice(0, 1)
 var roll = User.getProperty("roll")
 var value = User.getProperty("value")
 var url = `https://lu.indiaexaminfo.co.in/PATLIPUTRA${message}/${roll}.pdf`
@@ -22,8 +23,9 @@ if (msg == "/" && message.length >= 12) {
   if (isNumeric(roll) && roll.length == 13) {
     Api.sendDocument({
       document: url,
+      on_error: "/on_error",
       caption:
-        "Happy to Share Your Results!\nPlease share this bot to your friends @PPU_Result_Bot",
+        "Found this bot helpful? Share it with your friends and make their lives easier too! 🤖✨",
       reply_markup: {
         inline_keyboard: [
           [

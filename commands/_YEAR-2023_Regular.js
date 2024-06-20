@@ -6,7 +6,7 @@
   folder: 
   answer: 
   keyboard: 
-  aliases: /year-2022/regular, /year-2021/regular
+  aliases: /year-2024/regular, /year-2022/regular, /year-2021/regular
   group: 
 CMD*/
 
